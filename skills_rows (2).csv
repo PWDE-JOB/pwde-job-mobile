@@ -1,0 +1,101 @@
+id,skill,category
+1,Troubleshooting,Support
+2,AWS,Digital Management
+3,Accessibility,Support
+4,Accuracy,Professional
+5,Analytics,Digital Management
+6,Android,Digital Coding
+7,Animal Handling,Labor
+8,Attention to Detail,Professional
+9,Basic Veterinary Knowledge,Labor
+10,Blueprint Reading,Mechanical
+11,Branding,Marketing
+12,Bricklaying,Manual
+13,Bug Reporting,Support
+14,CRM,Support
+15,Canva,Creative Digital
+16,Cash Handling,Support
+17,Circuit Design,Mechanical
+18,Cleaning Techniques,Labor
+19,Communication,Support
+20,Content Editing,Content Writing
+21,Content Planning,Content Writing
+22,Copywriting,Content Writing
+23,Customer Service,Support
+24,Data Entry,Support
+25,Data Science,Digital Management
+26,Data Validation,Administrative
+27,Detail Orientation,Professional
+28,Documentation,Content Writing
+29,Editorial Calendar,Content Writing
+30,Email Management,Administrative
+31,Engagement,Marketing
+32,Equipment Operation,Mechanical
+33,Excel,Administrative
+34,Facebook Ads,Marketing
+35,Feeding,Labor
+36,Figma,Creative Digital
+37,Firewalls,Digital Management
+38,Fixture Installation,Mechanical
+39,Food Preparation,Labor
+40,Framing,Mechanical
+41,Google Workspace,Administrative
+42,Grammar,Content Writing
+43,Grooming,Manual
+44,HTML,Digital Coding
+45,Hand Tools,Manual
+46,Illustrator,Creative Digital
+47,Incident Response,Support
+48,Instagram,Marketing
+49,Inventory Management,Administrative
+50,Java,Digital Coding
+51,Lesson Planning,Professional
+52,Listening,Creative Audio
+53,MIG Welding,Manual
+54,MS Excel,Professional
+55,Machine Learning,Digital Coding
+56,Machine Operation,Digital Coding
+57,Metal Fabrication,Labor
+58,Microservices,Creative Digital
+59,Mortar Mixing,Labor
+60,Multitasking,Support
+61,Networking,Marketing
+62,Order Processing,Transcription
+63,Organization,Support
+64,POS Systems,Transcription
+65,Pandas,Digital Coding
+66,Patience,Support
+67,Photoshop,Creative Digital
+68,Pipe Fitting,Manual
+69,Problem Solving,Professional
+70,Product Listing,Transcription
+71,Prototyping,Manual
+72,Python,Digital Coding
+73,Quality Control,Manual
+74,Recipe Following,Manual
+75,Record Keeping,Transcription
+76,Remote Tools,Manual
+77,Reporting,Professional
+78,Research,Professional
+79,Risk Assessment,Administrative
+80,SEO,Administrative
+81,SQL,Digital Coding
+82,Safety Practices,Manual
+83,Salesforce,Marketing
+84,Scheduling,Support
+85,Screen Reader,Creative Audio
+86,Security,Administrative
+87,Shopify,Marketing
+88,Spring Boot,Digital Coding
+89,Statistics,Manual
+90,Stonework,Labor
+91,Subject Expertise,Professional
+92,System Installation,Manual
+93,TIG Welding,Labor
+94,Task Management,Administrative
+95,Teamwork,Support
+96,Testing Tools,Support
+97,Time Management,Manual
+98,Transcription Tools,Transcription
+99,Troubleshooting,Manual
+100,Typing,Manual

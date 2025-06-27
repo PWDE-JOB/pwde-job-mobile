@@ -1,0 +1,74 @@
+# React Native dependencies
+node_modules/
+
+# macOS system files
+.DS_Store
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Logs and debug files
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# Environment files
+.env
+.env.*.local
+.env.local
+
+# Expo (if you're using Expo)
+.expo/
+.expo-shared/
+web-build/
+dist/
+expo-env.d.ts
+
+# Metro bundler
+.metro-cache/
+.metro-health-check*
+
+# iOS build artifacts
+ios/build/
+ios/Pods/
+ios/Podfile.lock
+ios/*.xcodeproj/project.xcworkspace/
+ios/*.xcworkspace/xcshareddata/
+*.xcuserstate
+*.xcworkspace
+*.xcodeproj/*
+!ios/*.xcodeproj/project.pbxproj  # Keep this, it's necessary
+
+# Android build artifacts
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+*.keystore
+*.jks
+
+# Kotlin
+*.orig.*
+.kotlin/
+
+# iOS code signing & provisioning
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.cer
+
+# IDE settings
+.vscode/
+.idea/
+
+# Miscellaneous
+*.pem
+*.log
+
+# Bundle outputs (if any)
+*.bundle
+*.map
+
+# Watchman
+.watchmanconfig
