@@ -27,7 +27,7 @@ const DashBoard = () => {
 
   const getJobRecommendations = async () => {
     try {
-      const token = await AsyncStorage.getItem('Token');
+      const token = await AsyncStorage.getItem('sessionKey');
       
       const response = await fetch(`${API_BASE_URL}/reco-jobs`, {
         method: 'GET',
@@ -52,7 +52,7 @@ const DashBoard = () => {
   
   const getMyApplications = async () => {
     try {
-      const token = await AsyncStorage.getItem('Token');
+      const token = await AsyncStorage.getItem('sessionKey');
       
       const response = await fetch(`${API_BASE_URL}/my-applications`, {
         method: 'GET',
@@ -76,9 +76,9 @@ const DashBoard = () => {
 
   const getDeclinedJobs = async () => {
     try {
-      const token = await AsyncStorage.getItem('Token');
+      const token = await AsyncStorage.getItem('sessionKey');
       
-      const response = await fetch(`${API_BASE_URL}/declined-applications`, {
+      const response = await fetch(`${API_BASE_URL}/get-declined-applications`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -100,7 +100,7 @@ const DashBoard = () => {
 
   const applyForJob = async (jobId) => {
     try {
-      const token = await AsyncStorage.getItem('Token');
+      const token = await AsyncStorage.getItem('sessionKey');
       
       const response = await fetch(`${API_BASE_URL}/apply-job/${jobId}`, {
         method: 'POST',
@@ -125,7 +125,7 @@ const DashBoard = () => {
 
   const declineJob = async (jobId) => {
     try {
-      const token = await AsyncStorage.getItem('Token');
+      const token = await AsyncStorage.getItem('sessionKey');
       
       const response = await fetch(`${API_BASE_URL}/decline-application/${jobId}`, {
         method: 'POST',

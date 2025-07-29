@@ -14,7 +14,7 @@ const ApplicationHistory = () => {
 
   const getJobDetails = async (jobId) => {
     try {
-      const token = await AsyncStorage.getItem('Token');
+      const token = await AsyncStorage.getItem('sessionKey');
       
       const response = await fetch(`${API_BASE_URL}/view-job/${jobId}`, {
         method: 'GET',
@@ -38,7 +38,7 @@ const ApplicationHistory = () => {
 
   const getMyApplications = async () => {
     try {
-      const token = await AsyncStorage.getItem('Token');
+      const token = await AsyncStorage.getItem('sessionKey');
       
       const response = await fetch(`${API_BASE_URL}/my-applications`, {
         method: 'GET',

@@ -36,7 +36,7 @@ const SignIn = () => {
 
     //API call to authenticate user
     try {
-      const response = await fetch(`${API_BASE_URL}/login-employee`, {
+      const response = await fetch(`${API_BASE_URL}/employee/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,8 +52,13 @@ const SignIn = () => {
       const data = await response.json();
       
       if (data.Status === 'Success') {
-        // Store the token securely
-        await AsyncStorage.setItem('Token', data.Token);
+        // Store the token and user ID securely (based on actual API response)
+        await AsyncStorage.setItem('sessionKey', data.Token);
+        await AsyncStorage.setItem('userId', data['Stored User ID']);
+        
+        // Debug log what we're storing
+        console.log('🔐 LOGIN: Storing session key:', data.Token ? 'EXISTS' : 'NULL');
+        console.log('🔐 LOGIN: Storing user ID:', data['Stored User ID']);
         
         // Navigate to Dashboard on success
         router.push('/DashBoard');

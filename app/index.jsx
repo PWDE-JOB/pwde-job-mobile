@@ -13,7 +13,7 @@ const Home = () => {
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        const token = await AsyncStorage.getItem('Token');
+        const token = await AsyncStorage.getItem('sessionKey');
         // console.log(token);
         if (!token) {
           return; // No token found, stay on home screen

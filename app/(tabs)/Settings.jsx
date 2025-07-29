@@ -13,7 +13,7 @@ const Settings = () => {
 
   const handleLogout = async () => {
     try {
-      const token = await AsyncStorage.getItem('Token');
+      const token = await AsyncStorage.getItem('sessionKey');
       
       if (!token) {
         // If no token exists, just redirect to login
@@ -32,7 +32,8 @@ const Settings = () => {
 
       if (data.Status === 'Success') {
         // Clear stored token
-        await AsyncStorage.removeItem('Token');
+        await AsyncStorage.removeItem('sessionKey');
+        await AsyncStorage.removeItem('userId');
         // Clear any other stored user data
         await AsyncStorage.removeItem('userData');
         // Redirect to login page

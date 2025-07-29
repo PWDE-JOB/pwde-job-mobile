@@ -340,7 +340,7 @@ const EmployeeInfoForm = () => {
       // console.log('Attempting to send form data to:', `${API_BASE_URL}/signupEmployee`); <------FOR CHECKING CONECTION OF API
       
       // Make API call without Content-Type header
-      const response = await fetch(`${API_BASE_URL}/signupEmployee`, {
+      const response = await fetch(`${API_BASE_URL}/employee/signup`, {
         method: 'POST',
         body: data
       });

@@ -1,219 +1,111 @@
-# PWD-E-JOB Mobile Application
+# PWDE-JOB Mobile App
 
-A React Native mobile application designed to connect Persons with Disabilities (PWDs) with employment opportunities. The app features a Tinder-like job matching interface, comprehensive application tracking, and accessibility-first design.
+## Message System Implementation
 
-## 📱 Features
+### Overview
+The messaging system follows an Indeed-like approach where:
+- **Employers initiate conversations** by messaging employees about their job applications
+- **Employees can only reply** once they receive a message from an employer
+- Real-time messaging is implemented using WebSocket connections
+- All messages are stored persistently in the database
 
-- **Intuitive Job Matching**
-  - Swipe-based interface for job applications
-  - Smart job recommendations based on skills
-  - Detailed job listings with salary and requirements
+### Technical Implementation
 
-- **Application Management**
-  - Track application status (Under Review, Accepted, Declined)
-  - View application history with detailed job information
-  - Real-time status updates
+#### WebSocket Connection
+- **Endpoint**: `ws://pwde-job-api.onrender.com/ws/chat/{user_id}?token={access_token}`
+- **Authentication**: Uses session token from login
+- **Auto-reconnection**: Automatically reconnects if connection drops
 
-- **User Profile**
-  - Customizable user profiles
-  - PWD ID verification
-  - Skills and experience management
-  - Resume upload capability
-
-- **Accessibility Features**
-  - High contrast mode
-  - Text size adjustments
-  - Screen reader compatibility
-  - Navigation assistance
-
-- **Additional Features**
-  - In-app messaging system
-  - Push notifications
-  - Dark mode support
-  - Secure authentication
-
-## 🛠 Technical Requirements
-
-### Prerequisites
-
-- Node.js (v16 or higher)
-- npm or yarn
-- Java Development Kit (JDK) 11
-- Android Studio (for Android development)
-- Android SDK
-- USB debugging enabled on your Android device (for testing)
-
-### Environment Setup
-
-1. **Install Node.js and npm**
-   ```bash
-   # Check Node.js version
-   node --version
-   npm --version
-   ```
-
-2. **Install Expo CLI**
-   ```bash
-   npm install -g expo-cli
-   ```
-
-3. **Android Studio Setup**
-   - Download and install Android Studio
-   - Install Android SDK (minimum SDK 21)
-   - Configure ANDROID_HOME environment variable
-   - Add platform-tools to system PATH
-
-## 📥 Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd Frontend-mobile
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Configure environment variables**
-   Create a `.env` file in the root directory:
-   ```env
-   EXPO_PUBLIC_API_BASE_URL=your_api_url_here
-   ```
-
-## 🚀 Running the Application
-
-### Development Mode
-
-1. **Start the Expo development server**
-   ```bash
-   npx expo start -c
-   ```
-
-2. **Run on Android**
-   ```bash
-   npm run android
-   ```
-
-### Building for Production
-
-1. **Generate Android Bundle**
-   ```bash
-   cd android
-   ./gradlew assembleRelease
-   ```
-   The APK will be generated at `android/app/build/outputs/apk/release/app-release.apk`
-
-## 📦 Dependencies
-
-```json
+#### Message Format
+```javascript
 {
-  "@react-native-async-storage/async-storage": "2.1.2",
-  "@react-native-community/slider": "^4.5.6",
-  "@react-native-picker/picker": "2.11.0",
-  "expo": "53.0.12",
-  "expo-constants": "~17.1.6",
-  "expo-image-picker": "~16.1.4",
-  "expo-linking": "~7.1.5",
-  "expo-router": "~5.1.0",
-  "expo-status-bar": "~2.2.3",
-  "react": "19.0.0",
-  "react-native": "0.79.4",
-  "react-native-gesture-handler": "~2.24.0",
-  "react-native-reanimated": "~3.17.4",
-  "react-native-safe-area-context": "5.4.0",
-  "react-native-screens": "~4.11.1",
-  "expo-document-picker": "~13.1.6"
+  "sender_id": "user_id_of_sender",
+  "receiver_id": "user_id_of_receiver",
+  "job_id": "related_job_id",
+  "type": "text",
+  "message": "Hello, this is a message!"
 }
 ```
 
-## 📱 Android Configuration
+#### Key Features
+1. **Real-time messaging** - Messages appear instantly for both parties
+2. **Offline message storage** - Messages are stored when users are offline
+3. **Connection status indicator** - Shows if user is connected or disconnected
+4. **Message read receipts** - Tracks message delivery and read status
+5. **Job context** - Each conversation is tied to a specific job application
 
-The Android configuration is located in the `android/` directory:
+### File Structure
 
-- `android/app/build.gradle`: Application build settings
-- `android/app/src/main/AndroidManifest.xml`: App permissions and configuration
-- `android/gradle.properties`: Gradle settings
-- `android/settings.gradle`: Project settings
+#### Updated Files:
+- `app/(tabs)/inbox.jsx` - Shows conversation list (employers who messaged you)
+- `app/Chats.jsx` - Real-time chat interface with WebSocket
+- `styles/inbox.styles.js` - Styles for inbox UI
+- `styles/Chats.styles.js` - Styles for chat interface
 
-### Key Android Files
+#### Key Components:
+- **Inbox Screen**: Lists all conversations initiated by employers
+- **Chat Screen**: Real-time messaging interface
+- **WebSocket Service**: Handles real-time communication
+- **Message Components**: Chat bubbles with proper styling
 
-1. **MainActivity.kt**
-   - Main activity class
-   - Handles deep linking
-   - Manages splash screen
+### Usage Flow
 
-2. **MainApplication.kt**
-   - Application class
-   - Initializes React Native
-   - Manages native modules
+1. **Employee applies for job** using the job application system
+2. **Employer reviews application** and decides to message the employee
+3. **Employer sends first message** via their dashboard (web interface)
+4. **Employee receives notification** and can see the message in their inbox
+5. **Employee can now reply** and have a full conversation about the job
 
-3. **build.gradle**
-   - Dependencies
-   - Build configurations
-   - SDK versions
+### Environment Variables
+- `EXPO_PUBLIC_API_BASE_URL`: Set to `https://pwde-job-api.onrender.com`
 
-### Building for Android
+### Dependencies
+- `@react-native-async-storage/async-storage`: For storing session tokens
+- `expo-router`: For navigation between screens
+- WebSocket (native): For real-time messaging
 
-1. **Debug Build**
-   ```bash
-   cd android
-   ./gradlew assembleDebug
-   ```
+### Error Handling
+- Connection errors with retry functionality
+- Authentication errors with login redirection
+- Message sending errors with user feedback
+- Offline handling with message queuing
 
-2. **Release Build**
-   ```bash
-   cd android
-   ./gradlew assembleRelease
-   ```
+### Future Enhancements
+- Push notifications for new messages
+- File sharing capabilities
+- Video call integration
+- Message search functionality
+- Typing indicators
 
-3. **Bundle for Play Store**
-   ```bash
-   cd android
-   ./gradlew bundleRelease
-   ```
+---
 
-## 🔐 Security
+## Installation & Setup
 
-- Token-based authentication
-- Secure storage using AsyncStorage
-- API request authorization
-- Input validation and sanitization
-
-## 📁 Project Structure
-
-```
-Frontend-mobile/
-├── android/               # Android native files
-├── app/                   # Main application code
-│   ├── (auth)/           # Authentication screens
-│   ├── (tabs)/           # Main tab screens
-│   └── _layout.jsx       # Root layout
-├── assets/               # Images and assets
-├── styles/               # Style files
-└── package.json          # Project configuration
+1. Install dependencies:
+```bash
+npm install
 ```
 
-## 🤝 Contributing
+2. Set up environment variables:
+```bash
+# Create .env file with:
+EXPO_PUBLIC_API_BASE_URL=https://pwde-job-api.onrender.com
+```
 
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Open a Pull Request
+3. Run the app:
+```bash
+npm start
+```
 
-## 📄 License
+## Testing the Message System
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+1. **Login as employee** and apply for jobs
+2. **Login as employer** (web interface) and message an employee
+3. **Return to mobile app** and check the inbox
+4. **Start chatting** in real-time!
 
-## 👥 Authors
+The system is now ready for real-time messaging between employers and employees. 
 
-- Mark Angelo Toelntino - Initial work
-- Michael Ashley Ygana - API Integration
 
-## 🙏 Acknowledgments
 
-- Thanks to all contributors
-- Inspired by the need for accessible job platforms
-- Built with React Native and Expo 
+Progresss right now. Sending recieveing
